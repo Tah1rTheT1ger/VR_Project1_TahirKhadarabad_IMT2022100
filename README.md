@@ -123,6 +123,11 @@ This project aims to develop a computer vision solution to classify and segment 
 
 ## vi. Observations and Analysis
 
+### Binary Classification Using Handcrafted Features and ML Classifiers
+Using **SIFT** for feature extraction resulted in **lower classification accuracy** than **HOG**. This is because SIFT generates **high-dimensional feature vectors** for each keypoint, which increases the complexity of the input data. This added complexity makes it harder for traditional classifiers to generalize effectively, often leading to **overfitting**.
+
+Additionally, **SIFT focuses on local keypoints**, which may cause it to miss **important global patterns** that HOG captures. HOG extracts **gradient orientations over the entire image**, providing a structured representation of shapes and textures. This allows classifiers to **better distinguish between objects**, leading to improved classification performance.
+
 ### Region Segmentation Using Traditional Techniques
 During the segmentation process, we encountered a challenge where the background of the face crop images varied in intensity—sometimes appearing darker than the face mask and other times lighter. The appropriate thresholding method depends on this variation: **cv2.THRESH_BINARY** is suitable when the background is lighter, while **cv2.THRESH_BINARY_INV** is required when the background is darker. 
 
