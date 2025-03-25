@@ -128,6 +128,20 @@ Using **SIFT** for feature extraction resulted in **lower classification accurac
 
 Additionally, **SIFT focuses on local keypoints**, which may cause it to miss **important global patterns** that HOG captures. HOG extracts **gradient orientations over the entire image**, providing a structured representation of shapes and textures. This allows classifiers to **better distinguish between objects**, leading to improved classification performance.
 
+### b) Binary Classification Using CNN
+
+We trained **36 different CNN models** using all possible combinations of hyperparameters, including **learning rates (0.01, 0.001), batch sizes (32, 64), optimizers (Adam, SGD, RMSprop), and activation functions (ReLU, Sigmoid, Tanh)**.  
+
+From these experiments, we observed significant variations in performance across different configurations. Some models struggled to converge, while others performed exceptionally well. The **top-performing models** are listed in the results table above.  
+
+Key observations from the training process:  
+- **ReLU** consistently outperformed **Sigmoid** and **Tanh**, likely due to its ability to mitigate vanishing gradient issues.  
+- **Adam** showed the most stable convergence across different learning rates and batch sizes, while **SGD with momentum** performed well but was sensitive to the learning rate.  
+- **Higher batch sizes (64)** led to smoother training curves but, in some cases, resulted in slightly lower final accuracy due to reduced updates per epoch.  
+- **Models trained with a learning rate of 0.001** performed better than those with 0.01, as a higher learning rate often caused instability.  
+
+These insights highlight the **importance of hyperparameter tuning** in CNN training, demonstrating that minor changes in configuration can significantly impact classification accuracy. The inconsistencies across the various combinations can be observed in the accompanying notebook.
+
 ### c) Region Segmentation Using Traditional Techniques
 During the segmentation process, we encountered a challenge where the background of the face crop images varied in intensity—sometimes appearing darker than the face mask and other times lighter. The appropriate thresholding method depends on this variation: **cv2.THRESH_BINARY** is suitable when the background is lighter, while **cv2.THRESH_BINARY_INV** is required when the background is darker. 
 
