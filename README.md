@@ -121,5 +121,10 @@ This project aims to develop a computer vision solution to classify and segment 
 (Details will be added as the code is provided)
 
 ## vii. How to Run the Code
-Run the Python notebooks. Everything is ready inside them.
+Run the Python notebooks, or view the results that are visible from our runs.
+
+## Contributors
+IMT2022100 - Tahir Khadarabad
+IMT2022505 - Anirudh Pathaneni
+IMT2022545 - Chaitanya Tadikonda
 
