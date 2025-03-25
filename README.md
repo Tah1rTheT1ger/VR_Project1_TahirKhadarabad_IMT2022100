@@ -122,7 +122,13 @@ This project aims to develop a computer vision solution to classify and segment 
 | Average Dice Coefficient | 0.9531 |
 
 ## vi. Observations and Analysis
-(Details will be added as the code is provided)
+
+### Region Segmentation Using Traditional Techniques
+During the segmentation process, we encountered a challenge where the background of the face crop images varied in intensity—sometimes appearing darker than the face mask and other times lighter. The appropriate thresholding method depends on this variation: **cv2.THRESH_BINARY** is suitable when the background is lighter, while **cv2.THRESH_BINARY_INV** is required when the background is darker. 
+
+To address this, we calculate the **average intensity** of the image. If the average intensity exceeds **127**, the background is classified as **light**; otherwise, it is classified as **dark**. Based on this classification, the appropriate thresholding technique is selected to ensure accurate segmentation.
+
+Using this segmentation process, the **Dice coefficient score achieved was 46.08%**. To improve this accuracy, we implemented **U-Net**, a deep learning-based segmentation model. The process of training and evaluating U-Net is detailed below.
 
 ## vii. How to Run the Code
 Run the Python notebooks, or view the results that are visible from our runs.
