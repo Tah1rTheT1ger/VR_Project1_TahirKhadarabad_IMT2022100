@@ -96,26 +96,30 @@ This project aims to develop a computer vision solution to classify and segment 
 ### Binary Classification Using Handcrafted Features and ML Classifiers
 | Model                 | Accuracy | F1-Score |
 |-----------------------|----------|----------|
-| Support Vector Machine (SVM) | TBD      | TBD      |
-| Logistic Regression  | TBD      | TBD      |
-| Neural Network (MLP) | TBD      | TBD      |
+| Support Vector Machine (SVM) | 0.933      | 0.940      |
+| Logistic Regression  | 0.892      | 0.902      |
+| Neural Network (MLP) | 0.930      | 0.937      |
 
 ### Binary Classification Using CNN
 | Learning Rate | Batch Size | Optimizer | Activation | Accuracy |
 |--------------|------------|-----------|------------|----------|
-| 0.01        | 32         | Adam      | ReLU       | TBD      |
-| 0.001       | 64         | SGD       | Sigmoid    | TBD      |
-| 0.001       | 32         | RMSprop   | Tanh       | TBD      |
+| 0.01        | 32         | SGD      | ReLU       | 0.969      |
+| 0.01       | 32          | SGD      | Tanh       | 0.973      |
+| 0.01       | 64          | SGD      | ReLU       | 0.971      |
+| 0.01       | 64          | SGD      | Tanh       | 0.971      |
+| 0.001      | 32          | ADAM      | ReLU       | 0.974      |
+| 0.001      | 64          | ADAM      | ReLU       | 0.981      |
+
 
 ### Region Segmentation Results
 | Metric | Value |
 |--------|-------|
-| Average Dice Coefficient | TBD |
+| Average Dice Coefficient | 0.4608 |
 
 ### Mask Segmentation Using U-Net Results
 | Metric | Value |
 |--------|-------|
-| Average Dice Coefficient | TBD |
+| Average Dice Coefficient | 0.9531 |
 
 ## vi. Observations and Analysis
 (Details will be added as the code is provided)
