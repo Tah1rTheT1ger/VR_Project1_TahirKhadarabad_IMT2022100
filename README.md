@@ -128,7 +128,7 @@ This project aims to develop a computer vision solution to classify and segment 
 Run the Python notebooks, or view the results that are visible from our runs.
 
 ## Contributors
-IMT2022100 - Tahir Khadarabad
-IMT2022505 - Anirudh Pathaneni
-IMT2022545 - Chaitanya Tadikonda
+- IMT2022100 : Tahir Khadarabad
+- IMT2022505 : Anirudh Pathaneni
+- IMT2022545 : Chaitanya Tadikonda
 
