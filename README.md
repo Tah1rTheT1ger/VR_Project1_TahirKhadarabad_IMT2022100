@@ -149,6 +149,19 @@ To address this, we calculate the **average intensity** of the image. If the ave
 
 Using this segmentation process, the **Dice coefficient score achieved was 46.08%**. To improve this accuracy, we implemented **U-Net**, a deep learning-based segmentation model. The process of training and evaluating U-Net is detailed below.
 
+### d) Mask Segmentation Using U-Net  
+
+To improve the segmentation accuracy beyond traditional thresholding methods, we implemented **U-Net**, a widely used deep learning architecture for image segmentation. The dataset consisted of face crops and their corresponding segmentation masks, which were preprocessed by resizing to **128x128**, normalizing pixel values, and ensuring channel consistency.  
+
+The U-Net model was trained using the **Dice loss function**, which directly optimizes for segmentation overlap, making it more effective than binary cross-entropy for this task. We used **Adam optimizer** with an early stopping mechanism to prevent overfitting. The model was trained for **20 epochs** with a **batch size of 16**, achieving a **final Dice coefficient of 0.9531**—a significant improvement over the **47.79%** achieved with traditional thresholding techniques.  
+
+Observations from training:  
+- The **skip connections** in U-Net helped retain spatial information, leading to well-defined segmentation masks.  
+- Using **Dice loss** as the objective function ensured better segmentation performance by handling class imbalance effectively.  
+- The **early stopping** strategy improved generalization by halting training when validation loss plateaued.  
+
+Overall, U-Net significantly enhanced segmentation accuracy, producing masks that closely matched ground truth annotations. The qualitative results demonstrate clear boundaries and well-preserved mask structures, making this approach highly effective for face mask segmentation.
+
 ## vii. How to Run the Code
 Run the Python notebooks, or view the results that are visible from our runs.
 
