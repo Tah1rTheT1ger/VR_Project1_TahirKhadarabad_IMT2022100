@@ -8,7 +8,7 @@ This project aims to develop a computer vision solution to classify and segment 
 - **Masked Face Segmentation Dataset**: Includes ground truth face mask segmentations. Available at: [MFSD Dataset](https://github.com/sadjadrz/MFSD)
 
 ## iii. Methodology
-### Binary Classification Using Handcrafted Features and ML Classifiers
+### a) Binary Classification Using Handcrafted Features and ML Classifiers
 1. **Feature Extraction**:
    - Extracted **Histogram of Oriented Gradients (HOG)** features for texture analysis.
    - Extracted **Scale-Invariant Feature Transform (SIFT)** features to capture key points and descriptors.
@@ -24,7 +24,7 @@ This project aims to develop a computer vision solution to classify and segment 
    - Compared models based on **Accuracy** and **F1-Score**.
    - Normalized feature data using **StandardScaler** before training models.
 
-### Binary Classification Using CNN
+### b) Binary Classification Using CNN
 1. **Dataset Preparation**:
    - Images were split into **80% training** and **20% testing** with no overlap.
    - Applied **data augmentation** (resizing, horizontal flip, rotation) to improve generalization.
@@ -40,7 +40,7 @@ This project aims to develop a computer vision solution to classify and segment 
    - Tracked **training accuracy** over epochs.
    - Compared different hyperparameter combinations.
 
-### Region Segmentation Using Traditional Techniques
+### c) Region Segmentation Using Traditional Techniques
 1. **Image Preprocessing**:
    - Converted face images to grayscale.
    - Applied Gaussian Blur for noise reduction.
@@ -52,7 +52,7 @@ This project aims to develop a computer vision solution to classify and segment 
    - Compared predicted segmentation masks with ground truth masks.
    - Computed Dice Coefficient to measure segmentation accuracy.
 
-### Mask Segmentation Using U-Net
+### d) Mask Segmentation Using U-Net
 1. **Dataset Preparation**:
    - Images and corresponding segmentation masks were resized to 128x128.
    - Normalized pixel values to [0, 1] range.
@@ -93,14 +93,14 @@ This project aims to develop a computer vision solution to classify and segment 
 - **Epochs**: 15
 
 ## v. Results
-### Binary Classification Using Handcrafted Features and ML Classifiers
+### a) Binary Classification Using Handcrafted Features and ML Classifiers
 | Model                 | Accuracy | F1-Score |
 |-----------------------|----------|----------|
 | Support Vector Machine (SVM) | 0.933      | 0.940      |
 | Logistic Regression  | 0.892      | 0.902      |
 | Neural Network (MLP) | 0.930      | 0.937      |
 
-### Binary Classification Using CNN
+### b) Binary Classification Using CNN
 | Learning Rate | Batch Size | Optimizer | Activation | Accuracy |
 |--------------|------------|-----------|------------|----------|
 | 0.01        | 32         | SGD      | ReLU       | 0.969      |
@@ -111,24 +111,24 @@ This project aims to develop a computer vision solution to classify and segment 
 | 0.001      | 64          | ADAM      | ReLU       | 0.981      |
 
 
-### Region Segmentation Results
+### c) Region Segmentation Results
 | Metric | Value |
 |--------|-------|
 | Average Dice Coefficient | 0.4608 |
 
-### Mask Segmentation Using U-Net Results
+### d) Mask Segmentation Using U-Net Results
 | Metric | Value |
 |--------|-------|
 | Average Dice Coefficient | 0.9531 |
 
 ## vi. Observations and Analysis
 
-### Binary Classification Using Handcrafted Features and ML Classifiers
+### a) Binary Classification Using Handcrafted Features and ML Classifiers
 Using **SIFT** for feature extraction resulted in **lower classification accuracy** than **HOG**. This is because SIFT generates **high-dimensional feature vectors** for each keypoint, which increases the complexity of the input data. This added complexity makes it harder for traditional classifiers to generalize effectively, often leading to **overfitting**.
 
 Additionally, **SIFT focuses on local keypoints**, which may cause it to miss **important global patterns** that HOG captures. HOG extracts **gradient orientations over the entire image**, providing a structured representation of shapes and textures. This allows classifiers to **better distinguish between objects**, leading to improved classification performance.
 
-### Region Segmentation Using Traditional Techniques
+### c) Region Segmentation Using Traditional Techniques
 During the segmentation process, we encountered a challenge where the background of the face crop images varied in intensity—sometimes appearing darker than the face mask and other times lighter. The appropriate thresholding method depends on this variation: **cv2.THRESH_BINARY** is suitable when the background is lighter, while **cv2.THRESH_BINARY_INV** is required when the background is darker. 
 
 To address this, we calculate the **average intensity** of the image. If the average intensity exceeds **127**, the background is classified as **light**; otherwise, it is classified as **dark**. Based on this classification, the appropriate thresholding technique is selected to ensure accurate segmentation.
